@@ -1,0 +1,26 @@
+class 1 live:
+
+create maven project
+give name to group id (org.syntax or your company name) and artifact id (Project name)
+
+cucumber starts from:
+
+first, we write test case / scenario
+second, generate step definitions
+
+rules to remember:
+every step definition should be unique
+after generating step def, we cannot add anything in feature file
+we can reuse all the steps in feauture file but we cannot add step deef in every class
+
+background:
+
+till the time flow is same in all the common steps for the scenario in one feature file
+
+hooks:
+
+rule: there aare only 2 tags whoich are @before (precondition )and @after (postcondition)
+it alwaysd will be available in steps package
+
+execution:
+hooks - background - scenario
