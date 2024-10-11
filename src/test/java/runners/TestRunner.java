@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         glue = "steps",
         //when it's true, it generates steps definitions, otherwise it executes the code
         dryRun = false,
-        tags = "@test",
+        tags = "@excel",
         plugin = {"pretty"}
 )
 

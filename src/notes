@@ -11,7 +11,7 @@ second, generate step definitions
 rules to remember:
 every step definition should be unique
 after generating step def, we cannot add anything in feature file
-we can reuse all the steps in feauture file but we cannot add step deef in every class
+we can reuse all the steps in feature file but we cannot add step def in every class
 
 background:
 
@@ -19,8 +19,8 @@ till the time flow is same in all the common steps for the scenario in one featu
 
 hooks:
 
-rule: there aare only 2 tags whoich are @before (precondition )and @after (postcondition)
-it alwaysd will be available in steps package
+rule: there aare only 2 tags which are @before (precondition )and @after (post condition)
+it always will be available in steps package
 
 execution:
 hooks - background - scenario

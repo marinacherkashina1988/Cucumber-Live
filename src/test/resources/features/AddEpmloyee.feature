@@ -19,3 +19,32 @@ Feature: Add Employee in HRMS
     And user enters firstname and middlename and lastname
     And user clicks on save button
     Then employee added successfully
+
+  @params
+  Scenario: Add employee using parameter
+    When user enters "Marina" and "Ms" and "Cherkashina" in the name field
+    And user clicks on save button
+    Then employee added successfully
+
+@ddt
+  Scenario Outline: Adding multiple employees
+    When user enters "<firstname>" and "<middlename>" and "<lastname>"
+    And user clicks on save button
+    Then employee added successfully
+    Examples:
+      | firstname | middlename | lastname |
+      | Karina    | Ev         | Cherry   |
+      | Julia     | Ms         | Crystal  |
+      | Jack      | J          | Older    |
+
+  @datatable
+  Scenario: Adding employees using data table
+    When user enters employees using data table and saves them
+      | firstname | middlename | lastname |
+      | Karina    | Ev         | Cherry   |
+      | Julia     | Ms         | Crystal  |
+      | Jack      | J          | Older    |
+
+    @excel
+    Scenario: Adding employees using excel file
+      When user adds multiple employees using excel file
