@@ -15,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
-public class CommonMethods {
+public class CommonMethods extends PageInitializer{
 
     public static WebDriver driver;
 
@@ -35,8 +35,9 @@ public class CommonMethods {
                 throw new RuntimeException("Invalid Browser Name");
         }
         driver.manage().window().maximize();
-        driver.get(ConfigReader.read("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.get(ConfigReader.read("url"));
+        initializePageObjects();
     }
 
     public static void closeBrowser() {

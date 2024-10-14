@@ -14,12 +14,10 @@ import org.junit.runner.RunWith;
         //it provides missing step definition
         //to start the execution, set the value of dry run to false
         dryRun = false,
-        tags = "@validLogin",
-        plugin = {"pretty","html:target/cucumber.html","json:target/cucumber.json",
-                //to execute failed test cases one more time
-                "rerun:target/failed.txt"}
+        tags = "@invalidLogin",
+        plugin = {"pretty","html:target/cucumber.html","json:target/cucumber.json"}
 )
 
-public class TestRunner {
+public class SmokeRunner {
 
 }

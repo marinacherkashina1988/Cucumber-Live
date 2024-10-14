@@ -19,8 +19,53 @@ till the time flow is same in all the common steps for the scenario in one featu
 
 hooks:
 
-rule: there aare only 2 tags which are @before (precondition )and @after (post condition)
+rule: there are only 2 tags which are @before (precondition )and @after (post condition)
 it always will be available in steps package
 
 execution:
 hooks - background - scenario
+
+maven - build management tool
+
+src - main, test
+
+test - java & resources (for java and non-java stuff)
+
+separate packages for similar classes
+separate directories for similar files
+
+framework should be scalable
+framework should be easily managed
+framework should be able to reuse the code
+nothing should be passed hardcoded
+
+implement framework -
+cucumber/BDD framework
+it supports data driven testing
+hybrid framework - framework that supports several frameworks
+framework is all about standard skeleton and folder structure
+
+framework supports cross browser testing
+framework supports cross platform testing
+
+POM (P)age Object) Design pattern -
+as per POM, we should create separate page class for every screen of the page
+
+Assertion -
+if your script validation is failed, it will stop execution
+and it will give you an error message
+
+there are 2 types of assertion we use:
+check the presence of element/field/data - boolean condition
+check the data is correct or not (expected, actual)
+
+pom.xml file - backbone of the project
+when we execute the code
+-test the code
+install
+compile
+verify
+clean
+test
+
+
