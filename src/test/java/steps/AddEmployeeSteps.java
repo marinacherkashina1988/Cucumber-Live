@@ -2,10 +2,9 @@ package steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import pages.AddEmployeePage;
+import org.junit.Assert;
 import utils.CommonMethods;
+import utils.DBReader;
 import utils.ExcelReader;
 
 import java.io.IOException;
@@ -13,6 +12,11 @@ import java.util.List;
 import java.util.Map;
 
 public class AddEmployeeSteps extends CommonMethods {
+
+    String employeeId;
+    String expectedFN;
+    String expectedMN;
+    String expectedLN;
 
     @When("user enters firstname and lastname in the fields")
     public void user_enters_firstname_and_lastname_in_the_fields() {
@@ -32,6 +36,12 @@ public class AddEmployeeSteps extends CommonMethods {
         sendText(fn, addEmployeePage.firstnameField);
         sendText(mn, addEmployeePage.middlenameField);
         sendText(ln, addEmployeePage.lastnameField);
+
+        expectedFN = fn;
+        expectedMN = mn;
+        expectedLN = ln;
+
+        employeeId = addEmployeePage.employeeIDField.getAttribute("value");
     }
 
     @When("user enters {string} and {string} and {string}")
@@ -41,10 +51,23 @@ public class AddEmployeeSteps extends CommonMethods {
         sendText(ln, addEmployeePage.lastnameField);
     }
 
+    @Then("employee added successfully")
+    public void employee_added_successfully() {
+        String query = "select emp_firstname, emp_middle_name, emp_lastname from hs_hr_employees where employee_id = " + employeeId;
+        List<Map<String, String>> dataFromDB = DBReader.fetch(query);
+        System.out.println(dataFromDB);
+        String actualFN = dataFromDB.get(0).get("emp_firstname");
+        String actualMN = dataFromDB.get(0).get("emp_middle_name");
+        String actualLN = dataFromDB.get(0).get("emp_lastname");
+        Assert.assertEquals(expectedFN, actualFN);
+        Assert.assertEquals(expectedMN, actualMN);
+        Assert.assertEquals(expectedLN, actualLN);
+    }
+
     @When("user enters employees using data table and saves them")
     public void user_enters_employees_using_data_table_and_saves_them(io.cucumber.datatable.DataTable dataTable) {
         List<Map<String, String>> employeeNames = dataTable.asMaps();
-        for (Map <String, String> employee : employeeNames){
+        for (Map<String, String> employee : employeeNames) {
             sendText(employee.get("firstname"), addEmployeePage.firstnameField);
             sendText(employee.get("middlename"), addEmployeePage.middlenameField);
             sendText(employee.get("lastname"), addEmployeePage.lastnameField);
@@ -57,7 +80,7 @@ public class AddEmployeeSteps extends CommonMethods {
     public void user_adds_multiple_employees_using_excel_file() {
         try {
             List<Map<String, String>> employeeNames = ExcelReader.read();
-            for (Map<String, String> employee: employeeNames){
+            for (Map<String, String> employee : employeeNames) {
                 sendText(employee.get("firstname"), addEmployeePage.firstnameField);
                 sendText(employee.get("middlename"), addEmployeePage.middlenameField);
                 sendText(employee.get("lastname"), addEmployeePage.lastnameField);
@@ -77,10 +100,5 @@ public class AddEmployeeSteps extends CommonMethods {
     @When("user clicks on Add Employee option")
     public void user_clicks_on_add_employee_option() {
         click(addEmployeePage.addEmployeeButton);
-    }
-
-    @Then("employee added successfully")
-    public void employee_added_successfully() {
-        System.out.println("New employee added successfully");
     }
 }

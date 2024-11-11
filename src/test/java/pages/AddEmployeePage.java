@@ -22,6 +22,9 @@ public class AddEmployeePage extends CommonMethods {
     @FindBy(id = "btnSave")
     public WebElement saveButton;
 
+    @FindBy(id = "employeeId")
+    public WebElement employeeIDField;
+
     public AddEmployeePage(){
         PageFactory.initElements(driver, this);
     }

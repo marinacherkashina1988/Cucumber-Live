@@ -22,7 +22,7 @@ Feature: Add Employee in HRMS
 
   @params
   Scenario: Add employee using parameter
-    When user enters "Marina" and "Ms" and "Cherkashina" in the name field
+    When user enters "Basbusa" and "Awi" and "Laziza" in the name field
     And user clicks on save button
     Then employee added successfully
 
