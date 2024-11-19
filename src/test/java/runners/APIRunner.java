@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         //it provides missing step definition
         //to start the execution, set the value of dry run to false
         dryRun = false,
-        tags = "@creatingEmployeeAPI or @getOneEmployee or @updateEmployee",
+        tags = "@api",
         plugin = {"pretty","html:target/cucumber.html","json:target/cucumber.json",
                 //to execute failed test cases one more time
                 "rerun:target/failed.txt"}

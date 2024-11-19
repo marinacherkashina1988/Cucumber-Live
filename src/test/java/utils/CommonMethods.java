@@ -3,6 +3,7 @@ package utils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,6 +24,10 @@ public class CommonMethods extends PageInitializer{
 
         switch (ConfigReader.read("browser")) {
             case "Chrome":
+/*                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
+                //options.setHeadless(true);
+                driver = new ChromeDriver(options);*/
                 driver = new ChromeDriver();
                 break;
             case "FireFox":
